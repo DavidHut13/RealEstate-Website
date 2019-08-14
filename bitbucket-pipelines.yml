@@ -1,0 +1,41 @@
+# This is a sample build configuration for JavaScript.
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:10.15.3
+
+pipelines:
+  branches:
+    dev:
+      - step:
+        name: 'Build Project'
+        caches:
+          - node
+        script: # Modify the commands below to build your repository.
+          - npm install
+          - npm run build-dev
+        artifacts:
+          - dist/**
+      - step:
+          name: Backup Existing Files
+          script:
+            - pipe: atlassian/ssh-run:0.2.2
+              variables:
+                SSH_USER: $SSH_USERNAME
+                SERVER: $SSH_DEV_LINUX_SERVER
+                COMMAND: "mkdir -p /web/dev/an/website/dist; cd /web/dev/an/website; tar -czvf `date +%Y%m%d-%H%M$S.tar.gz` dist; ls -t | sed -e '1,10d' | xargs -d '\n' rm -f;"
+                PORT: $SSH_DEV_LINUX_SERVER_PORT
+                #EXTRA_ARGS: '<string>' # Optional
+                DEBUG: 'true'
+      - step:
+          name: Copy files to server
+          script:
+            - pipe: atlassian/scp-deploy:0.3.4
+              variables:
+                USER: $SSH_USERNAME
+                SERVER: $SSH_DEV_LINUX_SERVER
+                REMOTE_PATH: '/web/dev/an/website'
+                LOCAL_PATH: $BITBUCKET_CLONE_DIR/dist
+                DEBUG: 'true'
+                EXTRA_ARGS: '-r -P $SSH_DEV_LINUX_SERVER_PORT'
