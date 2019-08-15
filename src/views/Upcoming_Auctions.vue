@@ -4,19 +4,34 @@
         <b-col cols="12">
             <h1 class="mt-5 mb-3 page_title text-center ">UPCOMING AUCTION EVENTS</h1>
             <b-row>
-                <b-col cols="12" sm="7" offset-sm="1">
-                    <b-nav>
+                <b-col cols="12" sm="10" offset-sm="1">
+
+                    <!-- Old Nav. Delete later -->
+                    <!-- <b-nav>
                         <b-nav-item @click="getData(1)" active-class="active">Today</b-nav-item>
                         <b-nav-item @click="getData(7)" active-class="active">Next Week</b-nav-item>
                         <b-nav-item @click="getData(14)" active-class="active">Next 2 Weeks</b-nav-item>
-                    </b-nav>
+                    </b-nav> -->
+                    <div class="filter-bar">
+                        <div class="selectedWeek">
+                            <i @click="getData(-1)" class="arrow fas fa-arrow-left"></i>
+                            <span> {{ formatDate(selectedWeek) + " - " + formatDate(weekAfterSelected) + " " }}</span>
+                            <i @click="getData(1)" class="arrow fas fa-arrow-right"></i>
+                        </div>
+                        <b-dropdown id="conditionDropdown" text="Condition" variant="outline" class="m-2 ">
+                            <b-form-checkbox class="ml-2" id="allConditions" @change="toggleAll" v-model="allConditions">
+                                All
+                            </b-form-checkbox>
+                            <b-form-group class="ml-2">
+                                <b-form-checkbox-group v-model="selectedFilters" :options="options" stacked></b-form-checkbox-group>
+                            </b-form-group>
+                        </b-dropdown>
+                    </div>
                     <hr>
                 </b-col>
             </b-row>
             <b-row>
-                <b-col cols="12" sm="12" md="10" offset-md="1" lg="8" offset-lg="1">
-                    <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage">
-                    </b-pagination>
+                <b-col cols="12" sm="12" md="12" lg="10" offset-lg="1">
                     <b-row>
                         <b-col v-if="showLoad">
                             <div class="loadingScreen">
@@ -33,8 +48,37 @@
                                 </div>
                             </div>
                         </b-col>
-                        <b-col v-else-if="!showLoad" class="mb-4" v-for="(property, index) in listOfProperties" :key="index" cols="12" lg="6" xl="4" 3xl="3">
-                            <b-card overlay img-src="/img/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-col v-else-if="!showLoad" class="mb-4" v-for="(property, index) in listOfProperties" :key="index" cols="12" md="6">
+                            <b-card overlay img-src="/img/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-left img-alt="Image">
+
+                                <i class="heartIcon fas fa-heart fa-2x"></i>
+                                <div slot="footer">
+                                    <div class="cardinfo">
+                                        <h6 class="addressText text-nowrap">{{property.propertyAddress}}</h6>
+                                        <h6 v-show="property.propertyCity || property.propertState" class="addressText text-nowrap">{{property.propertyCity + "," + property.propertyState}}</h6>
+                                        <h6 v-show="property.openingBid > 0"><span class="startingBidText">Open Bid: </span><span class="bidAmount">{{property.openingBid | formatBid}}</span></h6>
+                                        <h6 v-show="property.openingBid <= 0"><span class="startingBidText">Open Bid: </span><span class="bidAmount">TBD</span></h6>
+                                        <h6 v-show="formatDate(property.auctionStart) != formatDate(property.auctionEnd)"><span class="addressText  text-nowrap">Auction Date: </span><span class="bidAmount">{{formatDate(property.auctionStart) + "-" + formatDate(property.auctionEnd)}}</span></h6>
+                                        <h6 v-show="formatDate(property.auctionStart) == formatDate(property.auctionEnd)"><span class="addressText  text-nowrap">Auction Date: </span><span class="bidAmount">{{formatDate(property.auctionStart)}}</span></h6>
+                                        <div class="bedbathIcons pull-right bedbathIcons" v-show="property.propertyBathrooms > 0 && property.propertyBedrooms > 0">
+                                            <span>{{CleanUpBathNumber(property.propertyBathrooms)}} <i class="fas fa-bath"></i></span>
+                                            <span> {{property.propertyBedrooms}} <i class="fas fa-bed"> </i> </span>
+                                            <span v-show="property.propertyLotSize"> | {{property.propertyLotSize}} sqft</span>
+                                        </div>
+                                        <div class="propertyConditionPills">
+                                            <b-badge v-show="property.isOccupied == ''" pill class="occupiedPill">Occupied</b-badge>
+                                            <b-badge v-show="property.isOccupied == 'Unoccupied'" pill class="vacantPill">Vacant</b-badge>
+                                            <b-badge v-show="property.auctionEventType == 'Online Only'" pill class="onlinePill">Online Only</b-badge>
+                                            <b-badge v-show="property.auctionEventType == 'Live From The Lawn'" pill class="onlinePill">Online & Onsite</b-badge>
+                                            <b-badge v-show="property.auctionEventType == 'On the Lawn'" pill class="onSitePill">Onsite Only</b-badge>
+                                        </div>
+                                    </div>
+                                </div>
+                            </b-card>
+
+                            <!-- Old Card Layout -->
+                            <!-- 
+                            <b-card overlay img-src="/img/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-left img-alt="Image">
                                 <b-card-text>
                                     <b-badge v-show="property.isOccupied" pill class="occupiedPill">Occupied</b-badge>
                                     <b-badge v-show="property.isOccupied == ''" pill class="vacantPill">Vacant</b-badge>
@@ -45,7 +89,6 @@
                                 <div slot="footer">
                                     <div class="cardinfo">
                                         <h6 class="addressText text-nowrap">{{property.propertyAddress}}</h6>
-                                        <!-- <h6><span class="startingBidText">Starting At:</span><span class="bidAmount">{{ property.openingBid  > 0 ? property.openingBid : 'TBD' }}</span></h6> -->
                                         <h6 v-show="property.openingBid > 0"><span class="startingBidText">Starting At: </span><span class="bidAmount">{{property.openingBid | formatBid}}</span></h6>
                                         <h6 v-show="property.openingBid <= 0"><span class="startingBidText">Starting At: </span><span class="bidAmount">TBD</span></h6>
                                         <div class="pull-right bedbathIcons">
@@ -58,15 +101,19 @@
                                         </div>
                                     </div>
                                 </div>
-                            </b-card>
+                            </b-card> -->
                         </b-col>
                     </b-row>
+                    <b-pagination class="my-5" v-model="currentPage" :total-rows="rows" :per-page="perPage" align="center">
+                    </b-pagination>
                 </b-col>
-                <b-col class="mt-5" cols="6" offset="3" lg="3" offset-lg="0" xl="3">
-                    <b-img class="ad_img text-center rounded shadow m-2" fluid src="/img/Upcoming_Auctions/AN-HomePage_Banner_FL_FtMyers_July2019.jpg"></b-img>
-                    <b-img class="ad_img rounded shadow mt-2 m-2" fluid src="/img/Upcoming_Auctions/AN-HomePage_Banner_HUD_BuyNOW_v1.jpg"></b-img>
-                    <b-img class="ad_img rounded shadow mt-2 m-2" fluid src="/img/Upcoming_Auctions/AN-HomePage-VideoOnDemand.png"></b-img>
-                </b-col>
+
+                <!-- Ad Images from Auction Network -->
+                <!-- <b-col class="mt-5" cols="6" offset="3" lg="3" offset-lg="0" xl="3">
+                    <b-img class="text-center rounded shadow m-2" fluid src="/img/Upcoming_Auctions/AN-HomePage_Banner_FL_FtMyers_July2019.jpg"></b-img>
+                    <b-img class="rounded shadow mt-2 m-2" fluid src="/img/Upcoming_Auctions/AN-HomePage_Banner_HUD_BuyNOW_v1.jpg"></b-img>
+                    <b-img class="rounded shadow mt-2 m-2" fluid src="/img/Upcoming_Auctions/AN-HomePage-VideoOnDemand.png"></b-img>
+                </b-col> -->
             </b-row>
         </b-col>
     </b-row>
@@ -86,43 +133,95 @@ export default {
             noDataFound: false,
             currentPage: 1,
             perPage: 9,
+            currentDateForNav: null,
+            selectedWeek: new Date(),
+            weekSelectedEnd: null,
+            selectedFilters: ['On the Lawn'],
+            allConditions: true,
+            options: ['Occupied', 'Vacant', 'Online & Onsite', 'Onsite Only', 'Online Only']
         }
     },
     components: {
         appCard: card
     },
     created() {
-        this.getData(1);
+        this.getData();
+
     },
     computed: {
         rows() {
             return this.propertyData.length;
         },
         listOfProperties() {
-            const items = this.propertyData
+            let v = this
+            const items = this.propertyData.filter(function(property){
+                if(v.selectedFilters.length > 1){
+                    return (v.checkSelectedConditions(v.selectedFilters,property.auctionEventType)) && (v.checkSelectedConditions(v.selectedFilters,property.isOcuppied))
+                }
+                if(v.selectedFilters.length == 1){
+                    return (v.checkSelectedConditions(v.selectedFilters,property.auctionEventType)) || (v.checkSelectedConditions(v.selectedFilters,property.isOcuppied))
+                }
+                if(!v.selectedFilters.length) {     
+                    return property
+                }
+            });
             // Return just page of items needed
-
+            console.log(items)
             return items.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
         },
+
+        weekAfterSelected() {
+            const date = this.selectedWeek;
+            const endDate = new Date(date);
+            endDate.setDate(date.getDate() + 7);
+            this.weekSelectedEnd = endDate
+            return endDate
+        },
+        
+    },
+    watch: {
+        selected(newVal, oldVal) {
+            // Handle changes in individual  checkboxesss
+            if (newVal.length === 0) {
+                this.allConditions = false
+            } else if (newVal.length === this.options.length) {
+                this.allConditions = true
+            } else {
+                this.allConditions = false
+            }
+        }
     },
     methods: {
+        checkSelectedConditions(arr,val){
+            return arr.some(arrVal => val == arrVal)
+        },
+        toggleAll(checked) {
+            this.selected = checked ? this.options.slice() : []
+        },
+        navigateWeeks(numWeeks = 1) {
+            const newDate = new Date(this.selectedWeek);
+            newDate.setDate(newDate.getDate() + (7 * numWeeks));
+            this.selectedWeek = newDate;
+        },
         getData(days) {
+            // Get the Date and convert to UTC
             var currentDate = new Date();
-            var nextWeek = new Date();
+            var ISODate = new Date(currentDate).toISOString();
             this.showLoad = true;
-            nextWeek.setDate(nextWeek.getDate() + days)
-            console.log(nextWeek)
+
+            //initialize weekSelectedEnd & weekSelected so its available for post request.
+            this.navigateWeeks(days);
+            this.weekSelectedEnd = this.weekAfterSelected;
             axios
-                .post('http://localhost:83/api/v1/property/search/', {
-                    currentDate: currentDate,
-                    endDate: nextWeek
+                .post('https://api-dev.auctionnetwork.com:83/api/v1/property/search/', {
+                    startDate: this.selectedWeek,
+                    endDate: this.weekSelectedEnd,
                 })
                 .then(response => {
                     this.noDataFound = false;
                     this.propertyData = response.data;
                     this.showLoad = false;
-                    console.log(response)
-                    console.log("This is the opening bid")
+                    console.log(this.propertyData)
                     if (!this.propertyData[0]) {
                         this.noDataFound = true;
                     }
@@ -132,11 +231,37 @@ export default {
                 });
 
         },
-        checklist() {
-            console.log("this is the list:")
+        formatDate(date) {
 
-            console.log(this.listOfProperties)
+            //converting UTC auction time to local time
+            var auctionDate = new Date(date)
+
+            // comparing the day in auctionDate to add the suffix thang
+            var day = auctionDate.getDate();
+            if (day > 3 && day < 21) {
+                return auctionDate.toDateString().slice(3, 10) + "th";
+            }
+            switch (day % 10) {
+                case 1:
+                    return auctionDate.toDateString().slice(3, 10) + "st";
+                case 2:
+                    return auctionDate.toDateString().slice(3, 10) + "nd";
+                case 3:
+                    return auctionDate.toDateString().slice(3, 10) + "rd";
+                default:
+                    return auctionDate.toDateString().slice(3, 10) + "th";
+            }
+
         },
+        CleanUpBathNumber(baths) {
+            // This methods cleans up bathrooms with decimals that arent .5
+            if (baths % .5 != 0) {
+                return Math.floor(baths)
+            } else {
+                return baths
+            }
+
+        }
     }
 }
 </script>
@@ -144,10 +269,30 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/custom.scss';
 
-.card-header {
-    padding: 0;
-    padding-top: .5rem;
-    margin: 0;
+#conditionDropdown {
+    text-align: right;
+    right: 10px;
+    margin: auto 0;
+}
+
+.card-footer {
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.selectedWeek {
+    margin: auto 0;
+}
+
+.filter-bar {
+    display: flex;
+    min-height: 50px;
+    justify-content: space-between;
+}
+
+.dropdown-left {
+    width: 100%;
 }
 
 .bedbathIcons {
@@ -156,6 +301,11 @@ export default {
 
 .bidAmount {
     font-weight: bold;
+}
+
+.arrow:hover {
+    color: #74BF01;
+    cursor: pointer;
 }
 
 .loadingScreen {
@@ -167,6 +317,21 @@ export default {
 
 .loadingText {
     color: #77C101;
+}
+
+.card-img-left {
+    width: 50%;
+    border-radius: 10px 0 0 10px;
+}
+
+::v-deep .custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+    background-color: #77C101 !important;
+    border-radius: 5px;
+}
+
+::v-deep .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #77C101 !important;
+    border-radius: 5px;
 }
 
 .icon {
@@ -192,16 +357,11 @@ export default {
     background-color: black;
 }
 
-.bid_btn.card-img {
-    width: 75%;
-}
-
 a.nav-link {
     color: rgb(85, 84, 84);
     border-radius: 0;
     border-bottom: 2px solid;
     border-color: transparent;
-
 }
 
 a.nav-link:hover {
@@ -215,39 +375,52 @@ a.nav-link:focus {
     border-color: #bcec4b;
 }
 
-.card_content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .card_bottom_icons {
     margin-bottom: 2px;
 }
 
-.card-header {
-    color: white;
-    border: none;
-    background-image: linear-gradient(120deg, #bcec4b 0%, #86CB01 100%);
-}
-
 .occupiedPill {
     color: white;
-    background-color: rgb(247, 115, 54);
+    background-color: rgb(255, 104, 94);
+    margin-left: 1px;
+    margin-right: 2px;
+    padding: 5px;
+    -webkit-box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
 }
 
 .onlinePill {
     color: white;
-    background-color: rgb(26, 175, 13);
+    background-color: rgb(135, 223, 108);
+    margin-left: 1px;
+    margin-right: 2px;
+    padding: 5px;
+    -webkit-box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
 }
 
 .onSitePill {
     color: white;
-    background-color: rgb(10, 124, 19);
+    background-color: rgb(180, 148, 231);
+    margin-left: 1px;
+    margin-right: 2px;
+    padding: 5px;
+    -webkit-box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
 }
-.vacantPill{
+
+.vacantPill {
     color: white;
-    background-color: rgb(16, 156, 238); 
+    background-color: rgb(112, 203, 255);
+    margin-left: 1px;
+    margin-right: 2px;
+    padding: 5px;
+    -webkit-box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
 }
 
 .card,
@@ -269,17 +442,29 @@ a.nav-link:focus {
     text-align: right;
     color: #74BF01;
     font-weight: 500;
+    z-index: 10;
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
 }
 
 h6.addressText {
     text-overflow: ellipsis;
     overflow: hidden;
+
 }
 
 .card-body {
-    z-index: 100;
-    /* This is for the heart hover effect. Without this hover does not work for the heart icon. */
-    pointer-events: none;
+    padding: .5rem;
+
+}
+
+.card-footer:last-child {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    background-color: white;
+    border-radius: 0 10px 10px 0;
 }
 
 .page_title {
