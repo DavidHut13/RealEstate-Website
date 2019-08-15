@@ -33,6 +33,13 @@
             <b-row>
                 <b-col cols="12" sm="12" md="12" lg="10" offset-lg="1">
                     <b-row>
+                        <b-col v-show="(filteredPropertyData.length == 0) && (!showLoad)">
+                            <div class="loadingScreen">
+                                <div class="text-center">
+                                    <p class="loadingText ">No Homes Found.</p>
+                                </div>
+                            </div>
+                        </b-col>
                         <b-col v-if="showLoad">
                             <div class="loadingScreen">
                                 <div class="text-center">
@@ -41,7 +48,7 @@
                                 </div>
                             </div>
                         </b-col>
-                        <b-col v-if="noDataFound && !showLoad">
+                        <b-col v-if="(noDataFound && !showLoad)">
                             <div class="loadingScreen">
                                 <div class="text-center">
                                     <p class="loadingText ">No Homes Found.</p>
@@ -66,8 +73,8 @@
                                             <span v-show="property.propertyLotSize"> | {{property.propertyLotSize}} sqft</span>
                                         </div>
                                         <div class="propertyConditionPills">
-                                            <b-badge v-show="property.isOccupied == ''" pill class="occupiedPill">Occupied</b-badge>
-                                            <b-badge v-show="property.isOccupied == 'Unoccupied'" pill class="vacantPill">Vacant</b-badge>
+                                            <b-badge v-show="property.isOccupied == 'Occupied'" pill class="occupiedPill">Occupied</b-badge>
+                                            <b-badge v-show="property.isOccupied == ''" pill class="vacantPill">Vacant</b-badge>
                                             <b-badge v-show="property.auctionEventType == 'Online Only'" pill class="onlinePill">Online Only</b-badge>
                                             <b-badge v-show="property.auctionEventType == 'Live From The Lawn'" pill class="onlinePill">Online & Onsite</b-badge>
                                             <b-badge v-show="property.auctionEventType == 'On the Lawn'" pill class="onSitePill">Onsite Only</b-badge>
@@ -129,6 +136,7 @@ export default {
         return {
             show: false,
             propertyData: [],
+            filteredPropertyData: [],
             showLoad: true,
             noDataFound: false,
             currentPage: 1,
@@ -136,9 +144,24 @@ export default {
             currentDateForNav: null,
             selectedWeek: new Date(),
             weekSelectedEnd: null,
-            selectedFilters: ['On the Lawn'],
+            selectedFilters: [],
             allConditions: true,
-            options: ['Occupied', 'Vacant', 'Online & Onsite', 'Onsite Only', 'Online Only']
+            options: [{
+                text: 'Occupied',
+                value: "Occupied"
+            }, {
+                text: 'Vacant',
+                value: ""
+            }, {
+                text: 'Online & Onsite',
+                value: "Live From The Lawn"
+            }, {
+                text: 'Onsite Only',
+                value: "On the Lawn"
+            }, {
+                text: 'Online Only',
+                value: "Online Only"
+            }]
         }
     },
     components: {
@@ -150,26 +173,29 @@ export default {
     },
     computed: {
         rows() {
-            return this.propertyData.length;
+            return this.filteredPropertyData.length;
         },
         listOfProperties() {
             let v = this
-            const items = this.propertyData.filter(function(property){
-                if(v.selectedFilters.length > 1){
-                    return (v.checkSelectedConditions(v.selectedFilters,property.auctionEventType)) && (v.checkSelectedConditions(v.selectedFilters,property.isOcuppied))
+            const items = this.propertyData.filter(function (property) {
+                if (v.selectedFilters.length > 1) {
+                    return (v.checkSelectedConditions(v.selectedFilters, property.auctionEventType)) && (v.checkSelectedConditions(v.selectedFilters, property.isOccupied))
                 }
-                if(v.selectedFilters.length == 1){
-                    return (v.checkSelectedConditions(v.selectedFilters,property.auctionEventType)) || (v.checkSelectedConditions(v.selectedFilters,property.isOcuppied))
+                if (v.selectedFilters.length === 1) {
+                    console.log("entering here")
+                    return (v.checkSelectedConditions(v.selectedFilters, property.auctionEventType)) || (v.checkSelectedConditions(v.selectedFilters, property.isOccupied))
                 }
-                if(!v.selectedFilters.length) {     
+                if (!v.selectedFilters.length) {
                     return property
                 }
             });
+            //this is to allow pagination to know how many rows/page to make in computed rows funct.
+            console.log("ths is filtered")
+            this.filteredPropertyData = items;
+            console.log(this.filteredPropertyData)
             // Return just page of items needed
-            console.log(items)
             return items.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
         },
-
         weekAfterSelected() {
             const date = this.selectedWeek;
             const endDate = new Date(date);
@@ -177,7 +203,6 @@ export default {
             this.weekSelectedEnd = endDate
             return endDate
         },
-        
     },
     watch: {
         selected(newVal, oldVal) {
@@ -192,7 +217,7 @@ export default {
         }
     },
     methods: {
-        checkSelectedConditions(arr,val){
+        checkSelectedConditions(arr, val) {
             return arr.some(arrVal => val == arrVal)
         },
         toggleAll(checked) {
@@ -208,7 +233,6 @@ export default {
             var currentDate = new Date();
             var ISODate = new Date(currentDate).toISOString();
             this.showLoad = true;
-
             //initialize weekSelectedEnd & weekSelected so its available for post request.
             this.navigateWeeks(days);
             this.weekSelectedEnd = this.weekAfterSelected;
@@ -232,10 +256,8 @@ export default {
 
         },
         formatDate(date) {
-
             //converting UTC auction time to local time
             var auctionDate = new Date(date)
-
             // comparing the day in auctionDate to add the suffix thang
             var day = auctionDate.getDate();
             if (day > 3 && day < 21) {
@@ -251,7 +273,6 @@ export default {
                 default:
                     return auctionDate.toDateString().slice(3, 10) + "th";
             }
-
         },
         CleanUpBathNumber(baths) {
             // This methods cleans up bathrooms with decimals that arent .5
@@ -260,7 +281,6 @@ export default {
             } else {
                 return baths
             }
-
         }
     }
 }
@@ -278,7 +298,6 @@ export default {
 .card-footer {
     flex-direction: column;
     justify-content: space-between;
-
 }
 
 .selectedWeek {
@@ -425,11 +444,11 @@ a.nav-link:focus {
 
 .card,
 .shadow {
-    -webkit-box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
-    border-radius: 5px;
-    border: none;
+    -webkit-box-shadow: 0px 0px 14px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 14px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 14px -8px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    border: 1px solid rgb(223, 223, 223);
 }
 
 .fa-heart:hover {
@@ -451,12 +470,10 @@ a.nav-link:focus {
 h6.addressText {
     text-overflow: ellipsis;
     overflow: hidden;
-
 }
 
 .card-body {
     padding: .5rem;
-
 }
 
 .card-footer:last-child {
