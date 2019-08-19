@@ -7,11 +7,13 @@ import {
 import BootstrapVue from 'bootstrap-vue'
 import VueCarousel from 'vue-carousel';
 import * as VueGoogleMaps from 'vue2-google-maps'
-
 import {
     store
 } from './store/store.js'
+import Axios from 'axios';
 
+const apiPath = 'api-dev.auctionnetwork.com:83/api/v1/property/search/'
+Axios.defaults.baseURL = 'https://' +apiPath
 
 Vue.use(VueCarousel);
 Vue.use(BootstrapVue, {

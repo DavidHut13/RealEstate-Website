@@ -5,7 +5,6 @@
             <h1 class="mt-5 mb-3 page_title text-center ">UPCOMING AUCTION EVENTS</h1>
             <b-row>
                 <b-col cols="12" sm="10" offset-sm="1">
-
                     <!-- Old Nav. Delete later -->
                     <!-- <b-nav>
                         <b-nav-item @click="getData(1)" active-class="active">Today</b-nav-item>
@@ -18,12 +17,11 @@
                             <span> {{ formatDate(selectedWeek) + " - " + formatDate(weekAfterSelected) + " " }}</span>
                             <i @click="getData(1)" class="arrow fas fa-arrow-right"></i>
                         </div>
-                        <b-dropdown id="conditionDropdown" text="Condition" variant="outline" class="m-2 ">
-                            <b-form-checkbox class="ml-2" id="allConditions" @change="toggleAll" v-model="allConditions">
-                                All
-                            </b-form-checkbox>
+                        <b-dropdown id="conditionDropdown" text="Filter" variant="outline" class="m-2 ">
                             <b-form-group class="ml-2">
-                                <b-form-checkbox-group v-model="selectedFilters" :options="options" stacked></b-form-checkbox-group>
+                                <b-form-radio-group v-model="filterGroup1" :options="options1" stacked></b-form-radio-group>
+                                <hr>
+                                <b-form-radio-group v-model="filterGroup2" :options="options2" stacked></b-form-radio-group>
                             </b-form-group>
                         </b-dropdown>
                     </div>
@@ -144,15 +142,18 @@ export default {
             currentDateForNav: null,
             selectedWeek: new Date(),
             weekSelectedEnd: null,
-            selectedFilters: [],
+            filterGroup1: "",
+            filterGroup2: "",
+            selectedFilters: [], //Changed to filterGroup1 and filterGroup2
             allConditions: true,
-            options: [{
+            options1: [{
                 text: 'Occupied',
                 value: "Occupied"
             }, {
                 text: 'Vacant',
                 value: ""
-            }, {
+            }],
+            options2: [{
                 text: 'Online & Onsite',
                 value: "Live From The Lawn"
             }, {
@@ -175,24 +176,29 @@ export default {
         rows() {
             return this.filteredPropertyData.length;
         },
+
         listOfProperties() {
             let v = this
+            this.selectedFilters = []
+            if (this.filterGroup1 || this.filterGroup2) {
+                this.selectedFilters.push(this.filterGroup1)
+                this.selectedFilters.push(this.filterGroup2)
+            }
+
             const items = this.propertyData.filter(function (property) {
                 if (v.selectedFilters.length > 1) {
                     return (v.checkSelectedConditions(v.selectedFilters, property.auctionEventType)) && (v.checkSelectedConditions(v.selectedFilters, property.isOccupied))
                 }
                 if (v.selectedFilters.length === 1) {
-                    console.log("entering here")
                     return (v.checkSelectedConditions(v.selectedFilters, property.auctionEventType)) || (v.checkSelectedConditions(v.selectedFilters, property.isOccupied))
                 }
-                if (!v.selectedFilters.length) {
+                if (v.selectedFilters.length === 0) {
+                    console.log("The filter was emptuy")
                     return property
                 }
             });
             //this is to allow pagination to know how many rows/page to make in computed rows funct.
-            console.log("ths is filtered")
             this.filteredPropertyData = items;
-            console.log(this.filteredPropertyData)
             // Return just page of items needed
             return items.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
         },
@@ -203,25 +209,12 @@ export default {
             this.weekSelectedEnd = endDate
             return endDate
         },
-    },
-    watch: {
-        selected(newVal, oldVal) {
-            // Handle changes in individual  checkboxesss
-            if (newVal.length === 0) {
-                this.allConditions = false
-            } else if (newVal.length === this.options.length) {
-                this.allConditions = true
-            } else {
-                this.allConditions = false
-            }
-        }
+
     },
     methods: {
+
         checkSelectedConditions(arr, val) {
             return arr.some(arrVal => val == arrVal)
-        },
-        toggleAll(checked) {
-            this.selected = checked ? this.options.slice() : []
         },
         navigateWeeks(numWeeks = 1) {
             const newDate = new Date(this.selectedWeek);
@@ -237,7 +230,7 @@ export default {
             this.navigateWeeks(days);
             this.weekSelectedEnd = this.weekAfterSelected;
             axios
-                .post('https://api-dev.auctionnetwork.com:83/api/v1/property/search/', {
+                .post('', {
                     startDate: this.selectedWeek,
                     endDate: this.weekSelectedEnd,
                 })
