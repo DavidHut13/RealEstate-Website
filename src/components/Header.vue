@@ -23,7 +23,6 @@
                             <b-button data-toggle="modal" data-target="#loginModal" active-class="active" class="loginBtn" tag="b-nav-item">Login / Sign-up</b-button>
                             <span class="orange_call_nav">Need Help? Call 866.921.2135</span>
                         </div>
-
                     </b-navbar-nav>
                 </b-collapse>
             </b-navbar>

@@ -224,11 +224,14 @@ export default {
         getData(days) {
             // Get the Date and convert to UTC
             var currentDate = new Date();
+
+            //this converts the current date to the ISO format
             var ISODate = new Date(currentDate).toISOString();
             this.showLoad = true;
             //initialize weekSelectedEnd & weekSelected so its available for post request.
             this.navigateWeeks(days);
             this.weekSelectedEnd = this.weekAfterSelected;
+            console.log(this.selectedWeek)
             axios
                 .post('', {
                     startDate: this.selectedWeek,
