@@ -1,0 +1,122 @@
+[
+     {
+          "address": "950 Henderson St APT 1208, Fort Worth, TX 76102",
+          "price": 319990,
+          "beds": 2,
+          "baths": 2,
+          "squareFoot": 1335,
+          "Xcordinate":"32.749287",
+          "Ycordinate": "-97.337676",
+          "type": "condo",
+          "condition": "bank-owned",
+          "picture": "/img/housePics/condo-1.jpg"
+     },
+     {
+          "address": "1808 Point De Vue Dr, Flower Mound, TX 75022",
+          "price": 9500000,
+          "beds": 9,
+          "baths": 13,
+          "squareFoot": 21043,
+          "Xcordinate":"33.00977",
+          "Ycordinate": "-97.1233547",
+          "type": "single-family",
+          "condition": "live",
+          "picture": "/img/housePics/house-1.jpg"
+     },
+     {
+          "address": "864 Meadow Hill Rd, Fort Worth, TX 76108",
+          "price": 729900,
+          "beds": 4,
+          "baths": 4,
+          "squareFoot": 4086,
+          "Xcordinate":"32.8128404",
+          "Ycordinate": "-97.5851148",
+          "type": "single-family",
+          "condition": "",
+          "picture": "/img/housePics/house-2.jpg"
+     },
+     {
+          "address": "123 Coronado Bnd, Fort Worth, TX 76108",
+          "price": 480000,
+          "beds": 3,
+          "baths": 3,
+          "squareFoot": 3308,
+          "Xcordinate":"32.816727",
+          "Ycordinate": "-97.5793158",
+          "type": "single-family",
+          "condition": "Reduced",
+          "picture": "/img/housePics/house-3.jpg"
+     },
+     {
+          "address": "2616 Torrey Pines Dr, Fort Worth, TX 76109",
+          "price": 993000,
+          "beds": 5,
+          "baths": 4,
+          "squareFoot": 5078,
+          "Xcordinate":"32.713856",
+          "Ycordinate": "-97.378210",
+          "type": "single-family",
+          "condition": "Reduced",
+          "picture": "/img/housePics/house-4.jpg"
+     },
+     {
+          "address": "2239 W Magnolia Ave, Fort Worth, TX 76110",
+          "price": 415000,
+          "beds": 3,
+          "baths": 2,
+          "squareFoot": 1683,
+          "Xcordinate":"32.730425",
+          "Ycordinate": "-97.351748",
+          "type": "single-family",
+          "condition": "",
+          "picture": "/img/housePics/house-5.jpg"
+     },
+     {
+          "address": "8433 Meadowbrook Dr, Fort Worth, TX 76120",
+          "price": 1295000,
+          "beds": 6,
+          "baths": 6,
+          "squareFoot": 8711,
+          "Xcordinate":"32.750131",
+          "Ycordinate": "-97.167195",
+          "type": "single-family",
+          "condition": "",
+          "picture": "/img/housePics/house-6.jpg"
+     },
+          {
+          "address": "2205 Bird St, Fort Worth, TX 76111",
+          "price": 375000,
+          "beds": 3,
+          "baths": 3,
+          "squareFoot": 1946,
+          "Xcordinate":"32.776905",
+          "Ycordinate": "-97.314345",
+          "type": "single-family",
+          "condition": "",
+          "picture": "/img/housePics/house-7.jpg"
+     },
+     {
+          "address": "501 Samuels Ave APT 530, Fort Worth, TX 76102",
+          "price": 925000,
+          "beds": 3,
+          "baths": 3,
+          "squareFoot": 2716,
+          "Xcordinate":"32.763293",
+          "Ycordinate": "-97.329585",
+          "type": "condo",
+          "condition": "live",
+          "picture": "/img/housePics/condo-2.jpg"
+     },
+     {
+          "address": "705 Jones St, Fort Worth, TX 76102",
+          "price": 1099900,
+          "beds": 3,
+          "baths": 4,
+          "squareFoot": 3480,
+          "Xcordinate":"32.754258",
+          "Ycordinate": "-97.327746",
+          "type": "condo",
+          "condition": "",
+          "picture": "/img/housePics/condo-3.jpg"
+     }
+   ]

@@ -174,7 +174,9 @@ export default {
         display: none;
     }
 }
-
+.learn_link{
+    text-decoration:none;
+}
 h1.learn_more {
     display: inline;
     text-decoration: none;

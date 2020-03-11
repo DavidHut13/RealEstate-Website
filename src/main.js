@@ -25,6 +25,15 @@ Vue.use(VueGoogleMaps, {
     },
 })
 
+Vue.filter('formatBid', function(val) {
+    if (val) {
+        var num = parseFloat(val);
+        return "$" + num.toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+    }
+    else{
+        return "$" + 0;
+    }
+})
 
 export const EventBus = new Vue();
 

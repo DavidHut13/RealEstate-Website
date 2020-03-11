@@ -22,13 +22,13 @@
             <b-col>
                 <carousel :perPage="3">
                     <slide class="p-2">
-                        <b-card overlay img-src="/img/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-card overlay img-src="/img/housePics/house-5.jpg" class="upcomingCards" img-alt="Image">
                             <b-card-text>
                             </b-card-text>
                             <div slot="footer">
                                 <div class="cardinfo">
                                     <h6>2097 Peanut Groove St. Fort Wayne, IN</h6>
-                                    <h4 class="price">$310,410.00</h4>
+                                    <h4 class="price">$310,410</h4>
                                     <div class="pull-right bedbathIcons">
                                         <span>1 <i class="fas fa-bath"></i></span>
                                         <span> 3 <i class="fas fa-bed"> </i> | 2,100 sqrft </span>
@@ -39,14 +39,14 @@
                         </b-card>
                     </slide>
                     <slide class="p-2">
-                        <b-card overlay img-src="/img/naomi-hebert-188443-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-card overlay img-src="/img/housePics/naomi-hebert-188443-unsplash.jpg" class="upcomingCards" img-alt="Image">
                             <em slot="title">Footer Slasdfasfdot</em>
                             <b-card-text>
                             </b-card-text>
                             <div slot="footer">
                                 <div class="cardinfo">
                                     <h6>3105 TownSquare Blvd. New York, NY</h6>
-                                    <h4 class="price">$740,321.00</h4>
+                                    <h4 class="price">$740,321</h4>
                                     <div class="pull-right bedbathIcons">
                                         <span>2 <i class="fas fa-bath"></i></span>
                                         <span> 3 <i class="fas fa-bed"> </i> | 4,031 sqrft </span>
@@ -57,13 +57,13 @@
                         </b-card>
                     </slide>
                     <slide class="p-2">
-                        <b-card overlay img-src="/img/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-card overlay img-src="/img/housePics/house-1.jpg" class="upcomingCards" img-alt="Image">
                             <b-card-text>
                             </b-card-text>
                             <div slot="footer">
                                 <div class="cardinfo">
                                     <h6>2097 Peanut Groove St. Fort Wayne, IN</h6>
-                                    <h4 class="price">$310,410.00</h4>
+                                    <h4 class="price">$310,410</h4>
                                     <div class="pull-right bedbathIcons">
                                         <span>1 <i class="fas fa-bath"></i></span>
                                         <span> 3 <i class="fas fa-bed"> </i> | 2,100 sqrft </span>
@@ -74,13 +74,13 @@
                         </b-card>
                     </slide>
                     <slide class="p-2">
-                        <b-card overlay img-src="/img/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-card overlay img-src="/img/housePics/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
                             <b-card-text>
                             </b-card-text>
                             <div slot="footer">
                                 <div class="cardinfo">
                                     <h6>2097 Peanut Groove St. Fort Wayne, IN</h6>
-                                    <h4 class="price">$310,410.00</h4>
+                                    <h4 class="price">$310,410</h4>
                                     <div class="pull-right bedbathIcons">
                                         <span>1 <i class="fas fa-bath"></i></span>
                                         <span> 3 <i class="fas fa-bed"> </i> | 2,100 sqrft </span>
@@ -91,14 +91,14 @@
                         </b-card>
                     </slide>
                     <slide class="p-2">
-                        <b-card overlay img-src="/img/naomi-hebert-188443-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-card overlay img-src="/img/housePics/naomi-hebert-188443-unsplash.jpg" class="upcomingCards" img-alt="Image">
                             <em slot="title">Footer Slasdfasfdot</em>
                             <b-card-text>
                             </b-card-text>
                             <div slot="footer">
                                 <div class="cardinfo">
                                     <h6>3105 TownSquare Blvd. New York, NY</h6>
-                                    <h4 class="price">$740,321.00</h4>
+                                    <h4 class="price">$740,321</h4>
                                     <div class="pull-right bedbathIcons">
                                         <span>2 <i class="fas fa-bath"></i></span>
                                         <span> 3 <i class="fas fa-bed"> </i> | 4,031 sqrft </span>
@@ -109,13 +109,13 @@
                         </b-card>
                     </slide>
                     <slide class="p-2">
-                        <b-card overlay img-src="/img/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-card overlay img-src="/img/housePics/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
                             <b-card-text>
                             </b-card-text>
                             <div slot="footer">
                                 <div class="cardinfo">
                                     <h6>2097 Peanut Groove St. Fort Wayne, IN</h6>
-                                    <h4 class="price">$310,410.00</h4>
+                                    <h4 class="price">$310,410</h4>
                                     <div class="pull-right bedbathIcons">
                                         <span>1 <i class="fas fa-bath"></i></span>
                                         <span> 3 <i class="fas fa-bed"> </i> | 2,100 sqrft </span>
@@ -137,13 +137,13 @@
             <b-col>
                 <carousel :perPage="3">
                     <slide class="p-2">
-                        <b-card overlay img-src="/img/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-card overlay img-src="/img/housePics/condo-1.jpg" class="upcomingCards" img-alt="Image">
                             <b-card-text>
                             </b-card-text>
                             <div slot="footer">
                                 <div class="cardinfo">
                                     <h6>2097 Peanut Groove St. Fort Wayne, IN</h6>
-                                    <h4 class="price">$310,410.00</h4>
+                                    <h4 class="price">$310,410</h4>
                                     <div class="pull-right bedbathIcons">
                                         <span>1 <i class="fas fa-bath"></i></span>
                                         <span> 3 <i class="fas fa-bed"> </i> | 2,100 sqrft </span>
@@ -154,14 +154,14 @@
                         </b-card>
                     </slide>
                     <slide class="p-2">
-                        <b-card overlay img-src="/img/naomi-hebert-188443-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-card overlay img-src="/img/housePics/house-2.jpg" class="upcomingCards" img-alt="Image">
                             <em slot="title">Footer Slasdfasfdot</em>
                             <b-card-text>
                             </b-card-text>
                             <div slot="footer">
                                 <div class="cardinfo">
                                     <h6>3105 TownSquare Blvd. New York, NY</h6>
-                                    <h4 class="price">$740,321.00</h4>
+                                    <h4 class="price">$740,321</h4>
                                     <div class="pull-right bedbathIcons">
                                         <span>2 <i class="fas fa-bath"></i></span>
                                         <span> 3 <i class="fas fa-bed"> </i> | 4,031 sqrft </span>
@@ -172,13 +172,13 @@
                         </b-card>
                     </slide>
                     <slide class="p-2">
-                        <b-card overlay img-src="/img/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-card overlay img-src="/img/housePics/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
                             <b-card-text>
                             </b-card-text>
                             <div slot="footer">
                                 <div class="cardinfo">
                                     <h6>2097 Peanut Groove St. Fort Wayne, IN</h6>
-                                    <h4 class="price">$310,410.00</h4>
+                                    <h4 class="price">$310,410</h4>
                                     <div class="pull-right bedbathIcons">
                                         <span>1 <i class="fas fa-bath"></i></span>
                                         <span> 3 <i class="fas fa-bed"> </i> | 2,100 sqrft </span>
@@ -189,13 +189,13 @@
                         </b-card>
                     </slide>
                     <slide class="p-2">
-                        <b-card overlay img-src="/img/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-card overlay img-src="/img/housePics/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
                             <b-card-text>
                             </b-card-text>
                             <div slot="footer">
                                 <div class="cardinfo">
                                     <h6>2097 Peanut Groove St. Fort Wayne, IN</h6>
-                                    <h4 class="price">$310,410.00</h4>
+                                    <h4 class="price">$310,410</h4>
                                     <div class="pull-right bedbathIcons">
                                         <span>1 <i class="fas fa-bath"></i></span>
                                         <span> 3 <i class="fas fa-bed"> </i> | 2,100 sqrft </span>
@@ -206,14 +206,14 @@
                         </b-card>
                     </slide>
                     <slide class="p-2">
-                        <b-card overlay img-src="/img/naomi-hebert-188443-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-card overlay img-src="/img/housePics/naomi-hebert-188443-unsplash.jpg" class="upcomingCards" img-alt="Image">
                             <em slot="title">Footer Slasdfasfdot</em>
                             <b-card-text>
                             </b-card-text>
                             <div slot="footer">
                                 <div class="cardinfo">
                                     <h6>3105 TownSquare Blvd. New York, NY</h6>
-                                    <h4 class="price">$740,321.00</h4>
+                                    <h4 class="price">$740,321</h4>
                                     <div class="pull-right bedbathIcons">
                                         <span>2 <i class="fas fa-bath"></i></span>
                                         <span> 3 <i class="fas fa-bed"> </i> | 4,031 sqrft </span>
@@ -224,13 +224,13 @@
                         </b-card>
                     </slide>
                     <slide class="p-2">
-                        <b-card overlay img-src="/img/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
+                        <b-card overlay img-src="/img/housePics/jolene-hardy-18952-unsplash.jpg" class="upcomingCards" img-alt="Image">
                             <b-card-text>
                             </b-card-text>
                             <div slot="footer">
                                 <div class="cardinfo">
                                     <h6>2097 Peanut Groove St. Fort Wayne, IN</h6>
-                                    <h4 class="price">$310,410.00</h4>
+                                    <h4 class="price">$310,410</h4>
                                     <div class="pull-right bedbathIcons">
                                         <span>1 <i class="fas fa-bath"></i></span>
                                         <span> 3 <i class="fas fa-bed"> </i> | 2,100 sqrft </span>
@@ -281,7 +281,7 @@ export default {
 
 <style scoped>
 .background {
-    background-image: url("/img/backyard-lights-property-32870.jpg");
+    background-image: url("/img/Home/backyard-lights-property-32870.jpg");
     height: 100vh;
     display: flex;
     background-position: center;
@@ -399,6 +399,7 @@ h4.price {
 }
 
 .card {
+    border:none;
     border-radius: .75rem;
     font-family: 'Roboto', sans-serif;
 }

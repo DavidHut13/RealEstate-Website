@@ -114,7 +114,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .page_title {
     font-family: 'Playfair Display', serif;
     font-weight: 300;

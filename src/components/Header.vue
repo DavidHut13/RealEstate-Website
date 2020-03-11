@@ -2,25 +2,21 @@
 <b-container fluid>
     <b-row>
         <b-col>
-            <b-navbar toggleable="xl">
+            <b-navbar toggleable="lg">
                 <b-navbar-brand>
                     <router-link to="/"><img class="logo-image" src="/img/AN-Logo.png" alt="Logo"></router-link>
                 </b-navbar-brand>
                 <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
                 <b-collapse id="nav-collapse" is-nav>
                     <router-link class="navHeader " active-class="active" tag="b-nav-item" to="/">Home</router-link>
-                    <router-link class="navHeader text-nowrap" active-class="active" tag="b-nav-item" to="/Upcoming_Auctions">Upcoming Auctions</router-link>
+                    <!-- <router-link class="navHeader text-nowrap" active-class="active" tag="b-nav-item" to="/Upcoming_Auctions">Upcoming Auctions</router-link> -->
                     <router-link class="navHeader" active-class="active" tag="b-nav-item" to="/video">Video</router-link>
-                    <b-nav-item-dropdown text="Buy" active-class="active" class="navHeader">
-                        <b-dropdown-item to="/buy">Buy Map</b-dropdown-item>
-                        <b-dropdown-item to="/BuyTable">Buy Table</b-dropdown-item>
-                        <b-dropdown-item to="/BuyUSMap">Buy Interactive Map</b-dropdown-item>
-                    </b-nav-item-dropdown>
+                    <router-link class="navHeader" active-class="active" tag="b-nav-item" to="/buy">Buy</router-link>
                     <router-link class="navHeader" active-class="active" tag="b-nav-item" to="/sell">Sell</router-link>
-                    <router-link class="navHeader text-nowrap" active-class="active" tag="b-nav-item" to="/help_center">Help Center</router-link>
+                    <router-link class="navHeader text-nowrap" active-class="active" tag="b-nav-item" to="/help_center">Help</router-link>
                     <b-navbar-nav class="ml-auto">
                         <div class="text-center">
-                            <b-button data-toggle="modal" data-target="#loginModal" active-class="active" class="loginBtn" tag="b-nav-item">Login / Sign-up</b-button>
+                            <b-button data-toggle="modal" data-target="#loginModal" active-class="active" class="loginBtn" tag="b-nav-item">Login</b-button>
                             <span class="orange_call_nav">Need Help? Call 866.921.2135</span>
                         </div>
 
@@ -155,9 +151,9 @@ a.dropdown-item:active {
 }
 
 .nav-item.btn.loginBtn>a.nav-link {
-    border-radius: 19px;
-    padding-left: 13px;
-    padding-right: 13px;
+    border-radius: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 .nav-item.btn.loginBtn.active>a.nav-link {
@@ -174,6 +170,10 @@ a.dropdown-item:active {
     box-shadow: 0px 0px 36px -12px rgba(115, 191, 1, 1);
     background-image: linear-gradient(120deg, #d4fc79 0%, #86CB01 100%);
     color: white;
+}
+
+.navbar-light .navbar-toggler{
+    border:none;
 }
 
 .nav-item.b-nav-dropdown.navHeader.show>.nav-link {
