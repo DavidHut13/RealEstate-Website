@@ -25,7 +25,7 @@
                      <p><i class="mb-5 orange fas fa-fax"></i> 918.250.1916</p>
                 </b-col>
                 <b-col class="my-5" cols="12" lg="6">
-                    <b-card class="shadow" bg-variant="light">
+                    <b-card bg-variant="light">
 
                         <b-form-group label-cols-lg="3" label="Support" label-size="lg" label-class="font-weight-bold pt-0" class="mb-0">
 
@@ -47,7 +47,7 @@
                             <b-form-select class="mb-4" v-model="selected" :options="options"></b-form-select>
                             <b-form-textarea id="textarea" v-model="text" placeholder="What can we help you with?" rows="3" max-rows="6"></b-form-textarea>
                         </b-form-group>
-                        <h1 class="text-right learn_more mt-4">Submit <i class="orange fas fa-arrow-circle-right"></i></h1>
+                        <h3 class="text-right submitBtn mt-4">Submit <i class="orange fas fa-arrow-circle-right"></i></h3>
                     </b-card>
                 </b-col>
             </b-row>
@@ -90,6 +90,12 @@ export default {
 </script>
 
 <style>
+.card{
+    border:none;
+-webkit-box-shadow: 0px 0px 11px -4px rgba(196,196,196,1);
+-moz-box-shadow: 0px 0px 21px -4px rgba(196,196,196,1);
+box-shadow: 0px 0px 20px -8px rgba(196,196,196,1);
+}
 .page_title {
     color: rgb(85, 84, 84);
     font-family: 'Playfair Display', serif;
@@ -103,8 +109,9 @@ export default {
     color: rgb(255, 138, 28);
 }
 
-.learn_more {
-
+.submitBtn {
+    cursor:pointer;
     color: rgb(85, 84, 84);
+
 }
 </style>

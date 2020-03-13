@@ -40,7 +40,7 @@
                 </b-col>
           
 
-                <b-col cols="12" md="12" lg="6" offset-lg="3">
+                <b-col cols="12" md="12" lg="6" >
                     <h2 class="mt-5">Live On Location</h2>
                     <b-card v-b-toggle="'collapse-3-'+index" @click="showInfo[index] = !showInfo[index]" v-for="(question,index) in live_on_location_questions" :key="index" class="mt-4">
                         <h5 class="response_text">{{question}}</h5>

@@ -1,7 +1,7 @@
 <template>
 <div>
-    <gmap-map ref="mapRef" :center="center" :zoom="8" style="width:100%;  height: 84vh;">
-        <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" @click="center=m.position"></gmap-marker>
+    <gmap-map  ref="mapRef" :center="center" :zoom="11" style="width:100%;  height: 87.9vh;">
+        <gmap-marker ref="marker" :key="index" v-for="(m, index) in markers" :position="m.position" @click="center=m.position"></gmap-marker>
     </gmap-map>
 </div>
 </template>
@@ -36,10 +36,9 @@ export default {
     methods: {
         placeMarkers() {
             this.markers = [];
-            
             if (this.propertyData.length > 0) {
             for (let i = 0; i <  this.propertyData.length; i++) {
-                var marker = {
+                var marker =  {
                     lat: parseFloat(this.propertyData[i].Xcordinate),
                     lng: parseFloat(this.propertyData[i].Ycordinate)
                     };
@@ -50,6 +49,7 @@ export default {
                     lng: this.markers[0].position.lng
                 })
             }
+            this.$store.commit("setMarkers",this.markers);
         },
         geoLocate() {
             if(navigator.geolocation) {

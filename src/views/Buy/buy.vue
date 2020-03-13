@@ -19,7 +19,7 @@
           <b-col md="12" lg="7" 2xl="5" 3xl="4" class="resultsSide">
                <b-row>
                     <b-col cols="12" sm="6" md="4" lg="6" class="resultsCols" v-for="(property, index) in propertyData" :key="index">
-                         <app-card v-bind:propertyData="propertyData[index]"></app-card>
+                         <app-card :propertyIndex="index"  :property="propertyData[index]"></app-card>
                     </b-col>
                     <b-col cols="12">
                          <div v-if="noData" class="noResults">
@@ -40,9 +40,7 @@ import GoogleMap from '../../GoogleMaps/googlemap.vue'
 import footer from "../../components/footer.vue"
 import card from "../../components/card.vue"
 import houses from "../../components/Json/Houses.json"
-import {
-     EventBus
-} from "../../main.js"
+import {EventBus} from "../../main.js"
 import axios from "axios"
 
 export default {
@@ -143,7 +141,16 @@ export default {
      computed: {
 
      },
+     created(){
+          this.setStoreProperties()
+     },
      methods: {
+          testThing(){
+               console.log("test")
+          },
+             setStoreProperties() {
+               this.$store.commit("setPropertyList", this.propertyData)
+          },
           getData(place) {
                var citySearch;
                var countySearch;
@@ -175,9 +182,9 @@ export default {
                          addressSearch = place.address_components[0].short_name + " " + place.address_components[1].short_name;
                          citySearch = place.address_components[2].long_name;
                          stateSearch = place.address_components[3].short_name;
-                       
+
                }
-                 console.log(place)
+               console.log(place)
                // axios
                //     .post('http://localhost:83/api/v1/property/search/', {
                //         city: citySearch,
@@ -203,6 +210,7 @@ export default {
           setPlace(place) {
                this.getData(place);
           },
+
      }
 }
 </script>
@@ -227,7 +235,7 @@ export default {
 .mapSide,
 .resultsSide {
      /* width: 100vw; */
-     height:84vh;
+     height: 87.9vh;
      overflow-y: scroll;
      background: white;
      padding-left: 0px;
@@ -241,7 +249,6 @@ export default {
      padding-right: 15px;
 }
 
-
 body {
      background-color: #F6F6F6;
      box-sizing: border-box;
@@ -251,22 +258,26 @@ body {
 .selectionBox {
      width: 15%;
 }
-@media (max-width:1100px){
-.selectionBox {
-     width: 20%;
+
+@media (max-width:1100px) {
+     .selectionBox {
+          width: 20%;
+     }
 }
+
+@media (min-width:1300px) {
+     .selectionBox {
+          width: 10%;
+     }
 }
-@media (min-width:1300px){
-.selectionBox {
-     width: 10%;
+
+.flexRight {
+     width: 100%;
+     display: flex;
+     justify-content: flex-end;
+     align-items: flex-end;
 }
-}
-.flexRight{
-    width:100%;
-    display:flex;
-    justify-content: flex-end;
-    align-items: end;
-}
+
 .filterButtons {
      margin-left: 15px;
      margin-right: 15px;

@@ -1,17 +1,17 @@
 <template>
 <b-container>
      <b-row>
-          <b-card class="my-2 mr-1">
-               <b-img class="houseImg" :src="propertyData.picture"></b-img>
-               <b-badge pill v-if="propertyData.condition == 'bank-owned'" class="bankOwned">Bank Owned</b-badge>
-               <b-badge pill v-if="propertyData.condition == 'live'"  class="livePill">Live Auction</b-badge>
-               <b-badge pill v-if="propertyData.condition == 'Reduced'"  class="reducedPill">Reduced Price</b-badge>
+          <b-card @click="highlightMarker()" class="my-2 mr-1">
+               <b-img class="houseImg" :src="property.picture"></b-img>
+               <b-badge pill v-if="property.condition == 'bank-owned'" class="bankOwned">Bank Owned</b-badge>
+               <b-badge pill v-if="property.condition == 'live'" class="livePill">Live Auction</b-badge>
+               <b-badge pill v-if="property.condition == 'Reduced'" class="reducedPill">Reduced Price</b-badge>
                <div slot="footer" class="cardinfo">
-                    <h6 class="addressText text-nowrap">{{propertyData.address}}</h6>
-                    <h4 class="price">{{propertyData.price | formatBid}}</h4>
+                    <h6 class="addressText text-nowrap">{{property.address}}</h6>
+                    <h4 class="price">{{property.price | formatBid}}</h4>
                     <div class="pull-right bedbathIcons">
-                         <span>{{propertyData.baths}} <i class="fas fa-bath"></i></span>
-                         <span> {{propertyData.beds}} <i class="fas fa-bed"> </i> | {{propertyData.squareFoot}} </span>
+                         <span>{{property.baths}} <i class="fas fa-bath"></i></span>
+                         <span> {{property.beds}} <i class="fas fa-bed"> </i> | {{property.squareFoot}} </span>
                          <i class="heartIcon fas fa-heart fa-2x float-right"></i>
                     </div>
                </div>
@@ -21,15 +21,27 @@
 </template>
 
 <script>
+import {gmapApi} from 'vue2-google-maps'
 export default {
      data() {
           return {
                info: null
           }
      },
-     props: {
-          propertyData: Object
-     }
+     props: ["property", "propertyIndex"],
+
+     methods: {
+          highlightMarker() {
+               var markers = this.$store.getters.getMapMarkers;
+               var myData = this.$store.getters.getPropertyList;
+               var currentIndex = this.propertyIndex;
+               // console.log(this.propertyData.id);
+              this.$root.markers[currentIndex].$markerObject.setAnimation(google.maps.Animation.BOUNCE)
+          },
+     },
+      computed: {
+    google: gmapApi
+  }
 
 }
 </script>
@@ -38,13 +50,13 @@ export default {
 .fa-heart {
      color: white;
      text-align: right;
-     color: #74BF01;
+     color: #74be02;
      font-weight: 500;
 }
 
 .heartIcon:hover {
      font-weight: 800;
-     color: rgb(202, 7, 82);
+     color: rgb(255, 132, 132);
 }
 
 .card-body {
@@ -64,21 +76,20 @@ export default {
 }
 
 .houseImg {
-     height:255px;
+     height: 255px;
 }
 
-@media (min-width:2000px){
-    .houseImg {
-         height:305px;
-}
-}
-
-@media (max-width:575px){
-    .houseImg {
-         height:405px;
-}
+@media (min-width:2000px) {
+     .houseImg {
+          height: 305px;
+     }
 }
 
+@media (max-width:575px) {
+     .houseImg {
+          height: 405px;
+     }
+}
 
 .bankOwned {
      color: white;
@@ -87,6 +98,7 @@ export default {
      top: 2%;
      left: 2%;
 }
+
 .livePill {
      color: white;
      background-color: rgb(95, 218, 95);
@@ -94,9 +106,10 @@ export default {
      top: 2%;
      left: 2%;
 }
+
 .reducedPill {
      color: white;
-     background-color: rgb(252, 131, 116);
+     background-color: rgb(255, 132, 132);
      position: absolute;
      top: 2%;
      left: 2%;
@@ -105,10 +118,11 @@ export default {
 .cardinfo {
      color: black;
 }
+
 .price {
-    display: inline;
-    color: #74BF01;
-    font-family: 'Roboto', sans-serif;
+     display: inline;
+     color: #74be02;
+     font-family: 'Roboto', sans-serif;
 }
 
 h6.addressText {

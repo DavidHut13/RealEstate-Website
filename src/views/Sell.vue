@@ -14,7 +14,7 @@
                     <p><i class="orange fas fa-envelope"></i> geoff.sills@williamsauction.com</p>
                     <p><i class="orange fas fa-phone"></i> 918.217.6450</p>
                         <b-link class="learn_link" href="https://www.williamsauction.com/sell/residential">
-                            <h1 class="learn_more mt-4">Learn More <i class="orange fas fa-arrow-circle-right"></i></h1>
+                            <h3 class="learn_more mt-4">Learn More <i class="orange fas fa-arrow-circle-right"></i></h3>
                         </b-link>
                     </div>
                 </b-col>
@@ -34,7 +34,7 @@
                     <p><i class="orange fas fa-envelope"></i> geoff.sills@williamsauction.com</p>
                     <p><i class="orange fas fa-phone"></i> 918.217.6450</p>
                     <b-link class="learn_link" href="https://www.williamsauction.com/sell/luxury">
-                        <h1 class="learn_more mt-4">Learn More <i class="orange fas fa-arrow-circle-right"></i></h1>
+                        <h3 class="learn_more mt-4">Learn More <i class="orange fas fa-arrow-circle-right"></i></h3>
                     </b-link>
                 </b-col>
                 <b-col class="mb-4" cols="12">
@@ -47,7 +47,7 @@
                     <p><i class="orange fas fa-envelope"></i> greg.lutz@williamsauction.com</p>
                     <p><i class="orange fas fa-phone"></i> 785.286.2518</p>
                     <b-link class="learn_link" href="https://www.williamsauction.com/sell/farm-ranch-land">
-                        <h1 class="learn_more mt-4">Learn More <i class="orange fas fa-arrow-circle-right"></i></h1>
+                        <h3 class="learn_more mt-4">Learn More <i class="orange fas fa-arrow-circle-right"></i></h3>
                     </b-link>
                 </b-col>
                 <b-col class="mt-1 farm_pic" cols="12" lg="6">
@@ -66,7 +66,7 @@
                     <p><i class="orange fas fa-envelope"></i> geoff.sills@williamsauction.com</p>
                     <p><i class="orange fas fa-phone"></i> 918.217.6450</p>
                     <b-link class="learn_link" href="https://www.williamsauction.com/sell/real-estate-property-disposition">
-                        <h1 class="learn_more mt-4">Learn More <i class="orange fas fa-arrow-circle-right"></i></h1>
+                        <h3 class="learn_more mt-4">Learn More <i class="orange fas fa-arrow-circle-right"></i></h3>
                     </b-link>
                 </b-col>
                 <b-col class="mb-4" cols="12">
@@ -79,7 +79,7 @@
                     <p><i class="orange fas fa-envelope"></i> fontana.fitzwilson@williamsauction.com</p>
                     <p><i class="orange fas fa-phone"></i> 918.362.6505</p>
                     <b-link class="learn_link" href="https://www.williamsauction.com/sell/fiduciary">
-                        <h1 class="learn_more mt-4">Learn More <i class="orange fas fa-arrow-circle-right"></i></h1>
+                        <h3 class="learn_more mt-4">Learn More <i class="orange fas fa-arrow-circle-right"></i></h3>
                     </b-link>
                 </b-col>
                 <b-col class="mt-1 fiduciary_pic" cols="12" lg="6">
@@ -98,7 +98,7 @@
                     <p><i class="orange fas fa-envelope"></i> fontana.fitzwilson@williamsauction.com</p>
                     <p><i class="orange fas fa-phone"></i> 918.362.6505</p>
                     <b-link class="learn_link" href="https://www.williamsauction.com/sell/commercial">
-                        <h1 class="learn_more mt-4">Learn More <i class="orange fas fa-arrow-circle-right"></i></h1>
+                        <h3 class="learn_more mt-4">Learn More <i class="orange fas fa-arrow-circle-right"></i></h3>
                     </b-link>
                 </b-col>
 

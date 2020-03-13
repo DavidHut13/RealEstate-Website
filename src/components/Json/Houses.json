@@ -9,7 +9,8 @@
           "Ycordinate": "-97.337676",
           "type": "condo",
           "condition": "bank-owned",
-          "picture": "/img/housePics/condo-1.jpg"
+          "picture": "/img/housePics/condo-1.jpg",
+          "id": 1
      },
      {
           "address": "1808 Point De Vue Dr, Flower Mound, TX 75022",
@@ -21,7 +22,8 @@
           "Ycordinate": "-97.1233547",
           "type": "single-family",
           "condition": "live",
-          "picture": "/img/housePics/house-1.jpg"
+          "picture": "/img/housePics/house-1.jpg",
+          "id": 2
      },
      {
           "address": "864 Meadow Hill Rd, Fort Worth, TX 76108",
@@ -33,7 +35,8 @@
           "Ycordinate": "-97.5851148",
           "type": "single-family",
           "condition": "",
-          "picture": "/img/housePics/house-2.jpg"
+          "picture": "/img/housePics/house-2.jpg",
+          "id": 3
      },
      {
           "address": "123 Coronado Bnd, Fort Worth, TX 76108",
@@ -45,7 +48,8 @@
           "Ycordinate": "-97.5793158",
           "type": "single-family",
           "condition": "Reduced",
-          "picture": "/img/housePics/house-3.jpg"
+          "picture": "/img/housePics/house-3.jpg",
+          "id": 4
      },
      {
           "address": "2616 Torrey Pines Dr, Fort Worth, TX 76109",
@@ -57,7 +61,8 @@
           "Ycordinate": "-97.378210",
           "type": "single-family",
           "condition": "Reduced",
-          "picture": "/img/housePics/house-4.jpg"
+          "picture": "/img/housePics/house-4.jpg",
+          "id": 5
      },
      {
           "address": "2239 W Magnolia Ave, Fort Worth, TX 76110",
@@ -69,7 +74,8 @@
           "Ycordinate": "-97.351748",
           "type": "single-family",
           "condition": "",
-          "picture": "/img/housePics/house-5.jpg"
+          "picture": "/img/housePics/house-5.jpg",
+          "id": 6
      },
      {
           "address": "8433 Meadowbrook Dr, Fort Worth, TX 76120",
@@ -81,7 +87,8 @@
           "Ycordinate": "-97.167195",
           "type": "single-family",
           "condition": "",
-          "picture": "/img/housePics/house-6.jpg"
+          "picture": "/img/housePics/house-6.jpg",
+          "id": 7
      },
           {
           "address": "2205 Bird St, Fort Worth, TX 76111",
@@ -93,7 +100,8 @@
           "Ycordinate": "-97.314345",
           "type": "single-family",
           "condition": "",
-          "picture": "/img/housePics/house-7.jpg"
+          "picture": "/img/housePics/house-7.jpg",
+          "id": 8
      },
      {
           "address": "501 Samuels Ave APT 530, Fort Worth, TX 76102",
@@ -105,7 +113,8 @@
           "Ycordinate": "-97.329585",
           "type": "condo",
           "condition": "live",
-          "picture": "/img/housePics/condo-2.jpg"
+          "picture": "/img/housePics/condo-2.jpg",
+          "id": 9
      },
      {
           "address": "705 Jones St, Fort Worth, TX 76102",
@@ -117,6 +126,7 @@
           "Ycordinate": "-97.327746",
           "type": "condo",
           "condition": "",
-          "picture": "/img/housePics/condo-3.jpg"
+          "picture": "/img/housePics/condo-3.jpg",
+          "id": 10
      }
    ]

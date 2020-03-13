@@ -5,12 +5,24 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    propertyData:[],
+    mapMarkers:[],
 
   },
   mutations: {
-
+setPropertyList(state,properties){
+  state.propertyData = properties;
+},
+setMarkers(state,markers){
+  state.mapMarkers = markers;
+}
   },
-  actions: {
-
+  getters: {
+    getPropertyList(state){
+      return state.propertyData
+    },
+    getMapMarkers(state){
+      return state.mapMarkers;
+    }
   }
 })
