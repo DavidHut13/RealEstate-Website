@@ -1,17 +1,19 @@
 <template>
 <b-container fluid>
-     <div>
-          <b-navbar>
-               <b-nav-form>
-                    <gmap-autocomplete @place_changed="setPlace" class="form-control"></gmap-autocomplete>
+     <b-row>
+          <b-col class="my-2" cols="12" sm="6">
+               <b-nav-form class="searchInput">
+                    <gmap-autocomplete @place_changed="setPlace" class="form-control searchInput"></gmap-autocomplete>
                </b-nav-form>
-               <div class="flexRight">
+          </b-col>
+          <b-col cols="12" sm="6">
+               <div class="flexRight my-2">
                     <b-form-select class="mx-2 selectionBox" v-model="priceSelected" :options="priceOptions"></b-form-select>
                     <b-form-select class="mx-2 selectionBox" v-model="bedsSelected" :options="bedOptions"></b-form-select>
                     <b-form-select class="mx-2 selectionBox" v-model="bathsSelected" :options="bathOptions"></b-form-select>
                </div>
-          </b-navbar>
-     </div>
+          </b-col>
+     </b-row>
      <b-row>
           <b-col lg="5" 2xl="7" 3xl="8" class="mapSide">
                <google-map :searchProp="searchinput" v-bind:propertyData="filteredList" />
@@ -26,9 +28,9 @@
                     </b-col>
                </b-row>
                <b-row v-if="filteredList.length == 0">
-                    <b-col  cols="12">
+                    <b-col cols="12">
                          <div class="noResults">
-                              <h5>No results found.</h5>  
+                              <h5>No results found.</h5>
                          </div>
                          <div>
                               <app-footer></app-footer>
@@ -80,7 +82,7 @@ export default {
                          text: "Beds: 4",
                          value: 4
                     },
-                     {
+                    {
                          text: "Beds: 5",
                          value: 5
                     }
@@ -105,7 +107,7 @@ export default {
                          text: "Baths: 4",
                          value: "4"
                     },
-                      {
+                    {
                          text: "Baths: 5",
                          value: 5
                     }
@@ -194,14 +196,6 @@ export default {
           }
      },
      methods: {
-          checkForMatch(arr, val) {
-               return arr.some(arrVal => val === arrVal);
-          },
-          clearFilter() {
-               this.bedsSelected = null
-               this.bathsSelected = null
-               this.priceSelected = null
-          },
           setStoreProperties() {
                this.$store.commit("setPropertyList", this.propertyData)
           },
@@ -279,10 +273,6 @@ export default {
      color: rgba(0, 0, 0, 0.586);
 }
 
-.form-control {
-     width: 80%;
-}
-
 .form-inline {
      flex-flow: nowrap;
 }
@@ -314,28 +304,6 @@ body {
      background-color: #F6F6F6;
      box-sizing: border-box;
      height: 100%;
-}
-
-.selectionBox {
-     width: 15%;
-}
-
-@media (max-width:800px) {
-     .selectionBox {
-          width: 30%;
-     }
-}
-
-@media (max-width:1300px) {
-     .selectionBox {
-          width: 20%;
-     }
-}
-
-@media (min-width:1300px) {
-     .selectionBox {
-          width: 5%;
-     }
 }
 
 .flexRight {
@@ -370,6 +338,6 @@ body {
      color: #74be02;
      text-align: center;
      font-size: 1.5em;
-     height:28vh;
+     height: 28vh;
 }
 </style>
