@@ -11,7 +11,8 @@
                     <h4 class="price">{{property.price | formatBid}}</h4>
                     <div class="pull-right bedbathIcons">
                          <span>{{property.baths}} <i class="fas fa-bath"></i></span>
-                         <span> {{property.beds}} <i class="fas fa-bed"> </i> | {{property.squareFoot}} </span>
+                         <span> {{property.beds}} <i class="fas fa-bed"> </i> | {{property.squareFoot}}</span>
+                         <span clss="squareFeet"> sqft</span>
                          <i class="heartIcon fas fa-heart fa-2x float-right"></i>
                     </div>
                </div>
@@ -21,7 +22,9 @@
 </template>
 
 <script>
-import {gmapApi} from 'vue2-google-maps'
+import {
+     gmapApi
+} from 'vue2-google-maps'
 export default {
      data() {
           return {
@@ -36,17 +39,23 @@ export default {
                var myData = this.$store.getters.getPropertyList;
                var currentIndex = this.propertyIndex;
                // console.log(this.propertyData.id);
-              this.$root.markers[currentIndex].$markerObject.setAnimation(google.maps.Animation.BOUNCE)
+               this.$root.markers[currentIndex].$markerObject.setAnimation(google.maps.Animation.BOUNCE)
           },
      },
-      computed: {
-    google: gmapApi
-  }
+     computed: {
+          google: gmapApi
+     }
 
 }
 </script>
 
 <style scoped>
+
+.squareFeet {
+     font-weight: bold;
+     font-size: .5rem;
+}
+
 .fa-heart {
      color: white;
      text-align: right;

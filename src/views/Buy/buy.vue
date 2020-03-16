@@ -14,16 +14,21 @@
      </div>
      <b-row>
           <b-col lg="5" 2xl="7" 3xl="8" class="mapSide">
-               <google-map :searchProp="searchinput" v-bind:propertyData="propertyData" />
+               <google-map :searchProp="searchinput" v-bind:propertyData="filteredList" />
           </b-col>
           <b-col md="12" lg="7" 2xl="5" 3xl="4" class="resultsSide">
-               <b-row>
-                    <b-col cols="12" sm="6" md="4" lg="6" class="resultsCols" v-for="(property, index) in propertyData" :key="index">
-                         <app-card :propertyIndex="index"  :property="propertyData[index]"></app-card>
+               <b-row v-if="filteredList.length > 0">
+                    <b-col class="results" cols="12">
+                         <p>Results: {{filteredList.length}}</p>
                     </b-col>
-                    <b-col cols="12">
-                         <div v-if="noData" class="noResults">
-                              No results found.
+                    <b-col cols="12" sm="6" md="4" lg="6" class="resultsCols" v-for="(property, index) in filteredList" :key="index">
+                         <app-card :propertyIndex="index" :property="property"></app-card>
+                    </b-col>
+               </b-row>
+               <b-row v-if="filteredList.length == 0">
+                    <b-col  cols="12">
+                         <div class="noResults">
+                              <h5>No results found.</h5>  
                          </div>
                          <div>
                               <app-footer></app-footer>
@@ -40,7 +45,9 @@ import GoogleMap from '../../GoogleMaps/googlemap.vue'
 import footer from "../../components/footer.vue"
 import card from "../../components/card.vue"
 import houses from "../../components/Json/Houses.json"
-import {EventBus} from "../../main.js"
+import {
+     EventBus
+} from "../../main.js"
 import axios from "axios"
 
 export default {
@@ -52,6 +59,7 @@ export default {
                bedsSelected: null,
                bathsSelected: null,
                priceSelected: null,
+               filtersSelected: [],
                bedOptions: [{
                          text: "Beds",
                          value: null
@@ -71,6 +79,10 @@ export default {
                     {
                          text: "Beds: 4",
                          value: 4
+                    },
+                     {
+                         text: "Beds: 5",
+                         value: 5
                     }
                ],
                bathOptions: [{
@@ -92,6 +104,10 @@ export default {
                     {
                          text: "Baths: 4",
                          value: "4"
+                    },
+                      {
+                         text: "Baths: 5",
+                         value: 5
                     }
                ],
                priceOptions: [{
@@ -128,7 +144,7 @@ export default {
                     },
                     {
                          text: "$800,000",
-                         value: 8000000
+                         value: 800000
                     }
                ]
           }
@@ -138,17 +154,55 @@ export default {
           appCard: card,
           GoogleMap,
      },
-     computed: {
-
-     },
-     created(){
+     created() {
           this.setStoreProperties()
      },
+     computed: {
+          filteredList() {
+               let v = this
+               this.filtersSelected = []
+               if (this.priceSelected != null) {
+                    this.filtersSelected.push(this.priceSelected)
+               } else {
+                    this.filtersSelected.push(0)
+               }
+               if (this.bedsSelected != null) {
+                    this.filtersSelected.push(this.bedsSelected)
+               } else {
+                    this.filtersSelected.push(0)
+               }
+               if (this.bathsSelected != null) {
+                    this.filtersSelected.push(this.bathsSelected)
+               } else {
+                    this.filtersSelected.push(0)
+               }
+               if ((this.bathsSelected == 0 && this.bedsSelected == 0 && this.priceSelected == 0)) {
+                    const items = this.propertyData;
+                    return items;
+               } else {
+                    var items = this.propertyData
+                    if (v.filtersSelected[0] != null) {
+                         var items = this.propertyData.filter(function (property) {
+                              if ((v.filtersSelected[0] <= property.price) && (v.filtersSelected[1] <= property.beds) && (v.filtersSelected[2] <= property.baths)) {
+                                   return true;
+                              }
+                         });
+                    }
+                    console.log(v.filtersSelected)
+                    return items;
+               }
+          }
+     },
      methods: {
-          testThing(){
-               console.log("test")
+          checkForMatch(arr, val) {
+               return arr.some(arrVal => val === arrVal);
           },
-             setStoreProperties() {
+          clearFilter() {
+               this.bedsSelected = null
+               this.bathsSelected = null
+               this.priceSelected = null
+          },
+          setStoreProperties() {
                this.$store.commit("setPropertyList", this.propertyData)
           },
           getData(place) {
@@ -218,6 +272,13 @@ export default {
 <style lang="scss" scoped>
 @import '../../assets/custom';
 
+.results>p {
+     font-weight: bold;
+     font-size: .75rem;
+     margin-bottom: 0;
+     color: rgba(0, 0, 0, 0.586);
+}
+
 .form-control {
      width: 80%;
 }
@@ -259,7 +320,13 @@ body {
      width: 15%;
 }
 
-@media (max-width:1100px) {
+@media (max-width:800px) {
+     .selectionBox {
+          width: 30%;
+     }
+}
+
+@media (max-width:1300px) {
      .selectionBox {
           width: 20%;
      }
@@ -267,7 +334,7 @@ body {
 
 @media (min-width:1300px) {
      .selectionBox {
-          width: 10%;
+          width: 5%;
      }
 }
 
@@ -298,10 +365,11 @@ body {
 
 .noResults {
      width: 100%;
-     margin-top: 2em;
+     margin-top: 5em;
      margin-bottom: 2em;
      color: #74be02;
      text-align: center;
      font-size: 1.5em;
+     height:28vh;
 }
 </style>
