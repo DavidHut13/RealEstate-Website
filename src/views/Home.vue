@@ -403,8 +403,7 @@ h4.price {
      border-top-left-radius: .3rem;
      border-top-right-radius: .3rem;
      border-bottom-left-radius: 0;
-     border-bottom-right-radius: 0;
-     
+     border-bottom-right-radius: 0;   
 }
 
 .card {

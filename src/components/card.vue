@@ -77,7 +77,7 @@ export default {
 .card-footer {
      border-bottom-left-radius: .3rem;
      border-bottom-right-radius: .3rem;
-     
+
 }
 
 .upcomingCards>.card-img {
@@ -93,7 +93,7 @@ export default {
      -webkit-box-shadow: 0px 0px 14px -8px rgba(0, 0, 0, 0.5);
      -moz-box-shadow: 0px 0px 14px -8px rgba(0, 0, 0, 0.5);
      box-shadow: 0px 0px 14px -8px rgba(0, 0, 0, 0.5);
-      border-bottom-left-radius: .3rem;
+     border-bottom-left-radius: .3rem;
      border-bottom-right-radius: .3rem;
 }
 
