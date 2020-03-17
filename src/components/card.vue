@@ -50,7 +50,6 @@ export default {
 </script>
 
 <style scoped>
-
 .squareFeet {
      font-weight: bold;
      font-size: .5rem;
@@ -73,7 +72,19 @@ export default {
      /* This is for the heart hover effect. Without this hover does not work for the heart icon. */
      pointer-events: none;
      padding: 0;
+}
 
+.card-footer {
+     border-bottom-left-radius: .3rem;
+     border-bottom-right-radius: .3rem;
+     
+}
+
+.upcomingCards>.card-img {
+     border-top-left-radius: .3rem;
+     border-top-right-radius: .3rem;
+     border-bottom-left-radius: 0;
+     border-bottom-right-radius: 0;
 }
 
 .card {
@@ -82,6 +93,8 @@ export default {
      -webkit-box-shadow: 0px 0px 14px -8px rgba(0, 0, 0, 0.5);
      -moz-box-shadow: 0px 0px 14px -8px rgba(0, 0, 0, 0.5);
      box-shadow: 0px 0px 14px -8px rgba(0, 0, 0, 0.5);
+      border-bottom-left-radius: .3rem;
+     border-bottom-right-radius: .3rem;
 }
 
 .houseImg {

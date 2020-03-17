@@ -81,9 +81,12 @@ input.input-box.form-control {
     border-radius: 0;
     border: 1px solid rgb(209, 206, 206);
     border-radius: 5px;
-    background:rgb(241, 241, 241);
+    background:white;
     width:70%;
     margin:0 auto;
+    -webkit-box-shadow: 0px 0px 8px -4px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 0px 8px -4px rgba(0,0,0,0.2);
+box-shadow: 0px 0px 8px -4px rgba(0,0,0,0.2);
 }
 
 .form-control:focus {
