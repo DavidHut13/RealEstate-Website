@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import GoogleMap from '../../GoogleMaps/googlemap.vue'
+import GoogleMap from '../../components/googleMap.vue'
 import footer from "../../components/footer.vue"
 import card from "../../components/card.vue"
 import houses from "../../components/Json/Houses.json"

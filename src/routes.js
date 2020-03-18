@@ -3,9 +3,6 @@ import Home from './views/Home.vue'
 import buy from './views/Buy/buy'
 import auction from './views/auction'
 import card from './components/card.vue'
-import BuyTable from './views/Buy/BuyTable.vue'
-import BuyUSMap from './views/Buy/BuyUSMap.vue'
-import Upcoming_Auctions from './views/Upcoming_Auctions.vue'
 import sell from './views/Sell.vue'
 import video from './views/Video.vue'
 import help_center from './views/Help_Center/help_center.vue'
@@ -47,21 +44,6 @@ export const routes =
       path: '/card',
       name: 'card',
       component: card
-    },
-    {
-      path: '/BuyTable',
-      name: 'BuyTable',
-      component: BuyTable
-    },
-    {
-      path: '/BuyUSMap',
-      name: 'BuyUSMap',
-      component: BuyUSMap
-    },
-    {
-      path: '/Upcoming_Auctions',
-      name: 'Upcoming_Auctions',
-      component: Upcoming_Auctions
     },
     {
       path: '/sell',
