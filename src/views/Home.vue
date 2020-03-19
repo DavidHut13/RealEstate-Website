@@ -300,13 +300,8 @@ export default {
 .form-control {
      margin: auto;
      width: 80%;
-     border-radius: 5px;
+     border-radius: .3rem;
 
-}
-
-.search>.propertyTypeFilter {
-     border-top-right-radius: 0;
-     border-bottom-right-radius: 0;
 }
 
 .Brand-Slogan {
@@ -370,9 +365,7 @@ h4.price {
 }
 
 .upcomingCards {
-     -webkit-box-shadow: 0px 0px 14px -9px rgba(0, 0, 0, 0.75);
-     -moz-box-shadow: 0px 0px 14px -9px rgba(0, 0, 0, 0.75);
-     box-shadow: 0px 0px 14px -9px rgba(0, 0, 0, 0.75);
+   
 }
 
 .form-control {
@@ -395,17 +388,26 @@ h4.price {
      z-index: 100;
      /* This is for the heart hover effect. Without this hover does not work for the heart icon. */
      pointer-events: none;
-
+     border-bottom-left-radius: .3rem;
+     border-bottom-right-radius: .3rem;
+      -webkit-box-shadow: 0px 0px 14px -9px rgba(0, 0, 0, 0.75);
+     -moz-box-shadow: 0px 0px 14px -9px rgba(0, 0, 0, 0.75);
+     box-shadow: 0px 0px 14px -9px rgba(0, 0, 0, 0.75);
+}
+.card-footer{
+      border-bottom-left-radius: .3rem;
+     border-bottom-right-radius: .3rem;
 }
 
 .upcomingCards>.card-img {
-     border-top-left-radius: .75rem;
-     border-top-right-radius: .75rem;
+     border-top-left-radius: .3rem;
+     border-top-right-radius: .3rem;
+     border-bottom-left-radius: 0;
+     border-bottom-right-radius: 0;   
 }
 
 .card {
      border: none;
-     border-radius: .75rem;
      font-family: 'Roboto', sans-serif;
 }
 

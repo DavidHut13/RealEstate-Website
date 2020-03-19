@@ -11,7 +11,8 @@
                     <h4 class="price">{{property.price | formatBid}}</h4>
                     <div class="pull-right bedbathIcons">
                          <span>{{property.baths}} <i class="fas fa-bath"></i></span>
-                         <span> {{property.beds}} <i class="fas fa-bed"> </i> | {{property.squareFoot}} </span>
+                         <span> {{property.beds}} <i class="fas fa-bed"> </i> | {{property.squareFoot}}</span>
+                         <span clss="squareFeet"> sqft</span>
                          <i class="heartIcon fas fa-heart fa-2x float-right"></i>
                     </div>
                </div>
@@ -21,7 +22,9 @@
 </template>
 
 <script>
-import {gmapApi} from 'vue2-google-maps'
+import {
+     gmapApi
+} from 'vue2-google-maps'
 export default {
      data() {
           return {
@@ -35,17 +38,27 @@ export default {
                var markers = this.$store.getters.getMapMarkers;
                var myData = this.$store.getters.getPropertyList;
                var currentIndex = this.propertyIndex;
+<<<<<<< HEAD
               this.$root.markers[currentIndex].$markerObject.setAnimation(google.maps.Animation.BOUNCE)
+=======
+               // console.log(this.propertyData.id);
+               this.$root.markers[currentIndex].$markerObject.setAnimation(google.maps.Animation.BOUNCE)
+>>>>>>> 7661bafc71cb8d659ff5dd709d556ff0915d81d2
           },
      },
-      computed: {
-    google: gmapApi
-  }
+     computed: {
+          google: gmapApi
+     }
 
 }
 </script>
 
 <style scoped>
+.squareFeet {
+     font-weight: bold;
+     font-size: .5rem;
+}
+
 .fa-heart {
      color: white;
      text-align: right;
@@ -63,7 +76,19 @@ export default {
      /* This is for the heart hover effect. Without this hover does not work for the heart icon. */
      pointer-events: none;
      padding: 0;
+}
 
+.card-footer {
+     border-bottom-left-radius: .3rem;
+     border-bottom-right-radius: .3rem;
+
+}
+
+.upcomingCards>.card-img {
+     border-top-left-radius: .3rem;
+     border-top-right-radius: .3rem;
+     border-bottom-left-radius: 0;
+     border-bottom-right-radius: 0;
 }
 
 .card {
@@ -72,6 +97,8 @@ export default {
      -webkit-box-shadow: 0px 0px 14px -8px rgba(0, 0, 0, 0.5);
      -moz-box-shadow: 0px 0px 14px -8px rgba(0, 0, 0, 0.5);
      box-shadow: 0px 0px 14px -8px rgba(0, 0, 0, 0.5);
+     border-bottom-left-radius: .3rem;
+     border-bottom-right-radius: .3rem;
 }
 
 .houseImg {

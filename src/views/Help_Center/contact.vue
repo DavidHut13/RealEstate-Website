@@ -89,7 +89,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .card{
     border:none;
 -webkit-box-shadow: 0px 0px 11px -4px rgba(196,196,196,1);

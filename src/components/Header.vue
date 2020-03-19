@@ -7,10 +7,10 @@
                          <router-link to="/"><img class="logo-image" src="/img/AN-Logo.png" alt="Logo"></router-link>
                     </b-navbar-brand>
                     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-                    <b-collapse class="navItemWrapper" id="nav-collapse" is-nav>
+                    <b-collapse id="nav-collapse" is-nav>
                          <router-link class="navItem mx-2" to="/">Home</router-link>
-                         <router-link class="navItem mx-2" to="/buy">Buy</router-link>
-                         <router-link class="navItem mx-2" to="/sell">Sell</router-link>
+                         <router-link class="navItem mx-2" to="/buy" >Buy</router-link>
+                         <router-link class="navItem mx-2" to="/sell" >Sell</router-link>
                          <router-link class="navItem mx-2" to="/help_center">Help</router-link>
                          <router-link data-toggle="modal" data-target="#loginModal" class="ml-auto navItem loginBtn" to="#">Login</router-link>
                     </b-collapse>
@@ -32,9 +32,7 @@ export default {
           }
      },
      methods: {
-          getActiveClass() {
-               document.getElementById("navItem").className = "active";
-          }
+    
      },
      components: {
           login
@@ -48,13 +46,18 @@ export default {
      margin-right: 50px;
 }
 
-.navItem {
+.navItem{
      padding: 5px 15px 5px 15px;
      border: none;
      color: rgb(59, 59, 59);
-     border-radius: 3px;
-     
-     
+     border-radius: 3px; 
+     text-decoration: none;    
+}
+@media (max-width:960px){
+    .navItem{
+   display:block;
+   text-align:center; 
+} 
 }
 
 a.navItem:hover {

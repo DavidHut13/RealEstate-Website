@@ -97,16 +97,19 @@ export default {
     display: block;
     border: none;
 }
-
+button.before_btn{
+     border: 1px solid white;
+}
 button.before_btn:hover,
 button.before_btn:active,
 button.before_btn:focus {
-    -webkit-box-shadow: 0px 0px 11px -2px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 11px -2px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 11px -2px rgba(0, 0, 0, 0.75);
+-webkit-box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.3);
+-moz-box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.3);
+box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.3);
+
     background-color: white;
     color: black;
-    border: none;
+    border: 1px solid rgb(216, 216, 216);
 }
 
 .page_title {
