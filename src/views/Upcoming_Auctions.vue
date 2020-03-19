@@ -165,8 +165,6 @@ export default {
                     return property
                 }
             });
-            // Return just page of items needed
-            console.log(items)
             return items.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
         },
 
@@ -221,7 +219,6 @@ export default {
                     this.noDataFound = false;
                     this.propertyData = response.data;
                     this.showLoad = false;
-                    console.log(this.propertyData)
                     if (!this.propertyData[0]) {
                         this.noDataFound = true;
                     }

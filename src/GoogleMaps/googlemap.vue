@@ -39,6 +39,7 @@ export default {
             if (this.propertyData.length > 0) {
             for (let i = 0; i <  this.propertyData.length; i++) {
                 var marker =  {
+                    icon: '/favicon.png',
                     lat: parseFloat(this.propertyData[i].Xcordinate),
                     lng: parseFloat(this.propertyData[i].Ycordinate)
                     };

@@ -35,7 +35,6 @@ export default {
                var markers = this.$store.getters.getMapMarkers;
                var myData = this.$store.getters.getPropertyList;
                var currentIndex = this.propertyIndex;
-               // console.log(this.propertyData.id);
               this.$root.markers[currentIndex].$markerObject.setAnimation(google.maps.Animation.BOUNCE)
           },
      },
