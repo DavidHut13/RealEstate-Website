@@ -22,11 +22,13 @@ export default {
     },
     mounted() {
         this.geoLocate();
+        this.placeMarkers()
     },
     watch: {
         propertyData: {
             handler() {
                 this.placeMarkers()
+                console.log("placing maerkers")
             },
             deep: true,
         }
@@ -37,16 +39,9 @@ export default {
             
             if (this.propertyData.length > 0) {
             for (let i = 0; i <  this.propertyData.length; i++) {
-<<<<<<< HEAD:src/GoogleMaps/googlemap.vue
                 var marker =  {
-                    icon: '/favicon.png',
                     lat: parseFloat(this.propertyData[i].Xcordinate),
                     lng: parseFloat(this.propertyData[i].Ycordinate)
-=======
-                var marker = {
-                    lat: parseFloat(this.propertyData[i].propertyLatitude),
-                    lng: parseFloat(this.propertyData[i].propertyLongitude)
->>>>>>> 7661bafc71cb8d659ff5dd709d556ff0915d81d2:src/components/googleMap.vue
                     };
                 this.markers.push({position: marker});
                 };

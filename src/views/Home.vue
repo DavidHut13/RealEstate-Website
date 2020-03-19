@@ -257,9 +257,6 @@ export default {
                currentPlace: null,
           }
      },
-     created() {
-          this.setStoreProperties();
-     },
      methods: {
           onSlideStart(slide) {
                this.sliding = true

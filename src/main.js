@@ -15,7 +15,7 @@ Vue.use(BootstrapVue, {
 
 Vue.use(VueGoogleMaps, {
     load: {
-        key: 'AIzaSyBWMC5Wk8xBOiQniQeDzrJ4wWJwaDal1uE',
+        key: process.env.VUE_APP_Google_KEY,
         libraries: 'places', // This is required if you use the Autocomplete plugin
     },
 })

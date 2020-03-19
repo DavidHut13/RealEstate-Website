@@ -38,12 +38,7 @@ export default {
                var markers = this.$store.getters.getMapMarkers;
                var myData = this.$store.getters.getPropertyList;
                var currentIndex = this.propertyIndex;
-<<<<<<< HEAD
               this.$root.markers[currentIndex].$markerObject.setAnimation(google.maps.Animation.BOUNCE)
-=======
-               // console.log(this.propertyData.id);
-               this.$root.markers[currentIndex].$markerObject.setAnimation(google.maps.Animation.BOUNCE)
->>>>>>> 7661bafc71cb8d659ff5dd709d556ff0915d81d2
           },
      },
      computed: {
