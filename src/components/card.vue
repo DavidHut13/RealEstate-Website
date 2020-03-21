@@ -108,7 +108,7 @@ export default {
 
 @media (max-width:575px) {
      .houseImg {
-          height: 405px;
+          height: 230px;
      }
 }
 

@@ -16,7 +16,7 @@
     <b-container>
         <!-- Upcoming Events Carousel -->
         <b-col cols="4" sm="8" class="mt-5">
-            <h2 class="LiveTitle">Luxury Properties</h2>
+            <h2 class="title">Luxury Properties</h2>
         </b-col>
         <b-row>
             <b-col cols="12" class="mb-5">
@@ -30,7 +30,7 @@
 
         <!-- Live Events Carousel -->
         <b-col cols="4" sm="8" class="mt-5">
-            <h2 class="LiveTitle">Nearby Auctions</h2>
+            <h2 class="title">Nearby Auctions</h2>
         </b-col>
         <b-row>
             <b-col cols="12" class="mb-5">
@@ -153,7 +153,7 @@ export default {
     font-family: 'Roboto', sans-serif;
 }
 
-.LiveTitle {
+.title {
     padding-top: 20px;
     padding-bottom: 10px;
     font-size: 34px;
