@@ -1,4 +1,5 @@
 module.exports = {
+  transpileDependencies:['vue2-google-maps'],
   devServer: {
     open: true
   },

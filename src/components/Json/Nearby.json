@@ -1,0 +1,67 @@
+[
+    {
+        "address": "501 Samuels Ave APT 530, Fort Worth, TX 76102",
+        "price": 925000,
+        "beds": 3,
+        "baths": 3,
+        "squareFoot": 2716,
+        "Xcordinate":"32.763293",
+        "Ycordinate": "-97.329585",
+        "type": "condo",
+        "condition": "live",
+        "picture": "/img/housePics/condo-2.jpg",
+        "id": 9
+   },
+   {
+        "address": "705 Jones St, Fort Worth, TX 76102",
+        "price": 1099900,
+        "beds": 3,
+        "baths": 4,
+        "squareFoot": 3480,
+        "Xcordinate":"32.754258",
+        "Ycordinate": "-97.327746",
+        "type": "condo",
+        "condition": "",
+        "picture": "/img/housePics/condo-3.jpg",
+        "id": 10
+   },
+   {
+        "address": "580 Joy Dr. White Settlement, TX 76108",
+        "price": 97500,
+        "beds": 2,
+        "baths": 1,
+        "squareFoot": 650,
+        "Xcordinate":"32..753309",
+        "Ycordinate": "-97.473685",
+        "type": "house",
+        "condition": "live",
+        "picture": "/img/housePics/house-10.jpeg",
+        "id": 11
+   },
+   {
+        "address": "1815 Windsor Ct, Arlington, TX 76012",
+        "price": 164000,
+        "beds": 3,
+        "baths": 2,
+        "squareFoot": 1505,
+        "Xcordinate":"32.745558",
+        "Ycordinate": "-97.138688",
+        "type": "house",
+        "condition": "",
+        "picture": "/img/housePics/house-8.jpeg",
+        "id": 12
+   },
+   {
+        "address": "2205 Winter Sunday Way, Arlington, TX 76012",
+        "price": 214900,
+        "beds": 3,
+        "baths": 3,
+        "squareFoot": 1986,
+        "Xcordinate":"32.741967",
+        "Ycordinate": "-97.143977",
+        "type": "house",
+        "condition": "",
+        "picture": "/img/housePics/house-9.jpeg",
+        "id": 13
+   }
+ ]

@@ -1,0 +1,68 @@
+[
+
+    {
+        "address": "1808 Point De Vue Dr, Flower Mound, TX 75022",
+        "price": 9500000,
+        "beds": 9,
+        "baths": 13,
+        "squareFoot": 21043,
+        "Xcordinate":"33.00977",
+        "Ycordinate": "-97.1233547",
+        "type": "single-family",
+        "condition": "live",
+        "picture": "/img/housePics/house-1.jpg",
+        "id": 2
+   },
+   {
+    "address": "864 Meadow Hill Rd, Fort Worth, TX 76108",
+    "price": 729900,
+    "beds": 4,
+    "baths": 4,
+    "squareFoot": 4086,
+    "Xcordinate":"32.8128404",
+    "Ycordinate": "-97.5851148",
+    "type": "single-family",
+    "condition": "",
+    "picture": "/img/housePics/house-2.jpg",
+    "id": 3
+},
+{
+    "address": "2616 Torrey Pines Dr, Fort Worth, TX 76109",
+    "price": 993000,
+    "beds": 5,
+    "baths": 4,
+    "squareFoot": 5078,
+    "Xcordinate":"32.713856",
+    "Ycordinate": "-97.378210",
+    "type": "single-family",
+    "condition": "Reduced",
+    "picture": "/img/housePics/house-4.jpg",
+    "id": 5
+},
+{
+    "address": "8433 Meadowbrook Dr, Fort Worth, TX 76120",
+    "price": 1295000,
+    "beds": 6,
+    "baths": 6,
+    "squareFoot": 8711,
+    "Xcordinate":"32.750131",
+    "Ycordinate": "-97.167195",
+    "type": "single-family",
+    "condition": "",
+    "picture": "/img/housePics/house-6.jpg",
+    "id": 7
+},
+{
+    "address": "705 Jones St, Fort Worth, TX 76102",
+    "price": 1099900,
+    "beds": 3,
+    "baths": 4,
+    "squareFoot": 3480,
+    "Xcordinate":"32.754258",
+    "Ycordinate": "-97.327746",
+    "type": "condo",
+    "condition": "",
+    "picture": "/img/housePics/condo-3.jpg",
+    "id": 10
+}
+]
