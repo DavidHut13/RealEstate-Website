@@ -35,7 +35,7 @@
         "Ycordinate": "-97.473685",
         "type": "house",
         "condition": "live",
-        "picture": "/img/housePics/house-10.jpeg",
+        "picture": "/img/housePics/house-10.jpg",
         "id": 11
    },
    {
@@ -48,7 +48,7 @@
         "Ycordinate": "-97.138688",
         "type": "house",
         "condition": "",
-        "picture": "/img/housePics/house-8.jpeg",
+        "picture": "/img/housePics/house-8.jpg",
         "id": 12
    },
    {
@@ -61,7 +61,7 @@
         "Ycordinate": "-97.143977",
         "type": "house",
         "condition": "",
-        "picture": "/img/housePics/house-9.jpeg",
+        "picture": "/img/housePics/house-9.jpg",
         "id": 13
    }
  ]
